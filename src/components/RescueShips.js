@@ -26,13 +26,9 @@ const RescueShips = ({ missionData }) => {
     <RescueShipsWrapper>
       <RescueShipsLine>RESCUE SHIPS</RescueShipsLine>
       <RescueShipsContainer>
-        <Ship
-          ship={{
-            homePort: "Port Canaveral",
-            name: "GO Ms Tree",
-            weight: "449964",
-          }}
-        ></Ship>
+        {missionData.ships.map((s) => (
+          <Ship ship={s}></Ship>
+        ))}
       </RescueShipsContainer>
     </RescueShipsWrapper>
   );

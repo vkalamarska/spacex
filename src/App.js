@@ -46,6 +46,7 @@ function App() {
               name
               home_port
               image
+              weight_kg
             }
             launch_date_utc
           }

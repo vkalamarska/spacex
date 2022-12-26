@@ -11,7 +11,7 @@ const ShipComponent = styled.div`
 const ShipImage = styled.div`
   width: 100%;
   height: 60%;
-  background-image: url(${p => p.imageUrl});
+  background-image: url(${(p) => p.imageUrl});
   border-top-left-radius: 20px;
   border-top-right-radius: 20px;
   background-size: 100%;
@@ -85,11 +85,7 @@ const Weight = styled.span`
 const Ship = ({ ship }) => {
   return (
     <ShipComponent>
-      <ShipImage
-        imageUrl={
-          "https://obiaddlataty.pl/wp-content/uploads/2020/02/domowa_pizza-1024x768.jpg"
-        }
-      ></ShipImage>
+      <ShipImage imageUrl={ship.image}></ShipImage>
       <ShipDetailsContainer>
         <ShipName>{ship.name}</ShipName>
         <Line></Line>
@@ -99,8 +95,8 @@ const Ship = ({ ship }) => {
             <WeightLine>WEIGHT [KG]</WeightLine>
           </LabelsContainer>
           <ValuesContainer>
-            <HomePort>{ship.homePort}</HomePort>
-            <Weight>{ship.weight}</Weight>
+            <HomePort>{ship.home_port}</HomePort>
+            <Weight>{ship.weight_kg}</Weight>
           </ValuesContainer>
         </ShipDetails>
       </ShipDetailsContainer>

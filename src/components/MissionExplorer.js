@@ -14,8 +14,7 @@ const AppContainer = styled.div`
 const Line = styled.span`
   width: 100%;
   border-bottom: 1px solid #5c5c5d;
-  position: absolute;
-  line-height: 1px;
+  line-height: 1em;
 `;
 
 const MissionExplorer = ({ allMissions }) => {
