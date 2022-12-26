@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 
 const MissionWrapper = styled.div`
   width: 100%;
@@ -33,7 +33,7 @@ const RocketLine = styled.span`
 `;
 
 const RocketContainer = styled.div`
-  width: 140px;
+  width: 150px;
   display: flex;
   justify-content: space-between;
 `;
@@ -53,42 +53,30 @@ const RocketStatus = styled.div`
   font-weight: bold;
   font-size: 9px;
   letter-spacing: 0.1em;
+
+  ${(p) =>
+    !p.isRecovered &&
+    css`
+      background: red;
+    `}
 `;
 
 const LearnMoreButton = styled.button`
   width: 120px;
   margin: 25px 0 0 0;
   padding: 15px 0;
+  position: relative;
   border: 1.5px solid #ffffff;
   background: transparent;
-  z-index: 0;
-  transition: border-color 0.35s ease, background 0.35s ease;
+  transition: 0.3s;
   font-weight: 500;
   font-size: 10px;
   color: #ffffff;
   cursor: pointer;
 
-  ::before {
-    background-color: white;
-    content: "";
-    display: block;
-    position: absolute;
-    top: 100%;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    z-index: -1;
-    -webkit-transition: all 0.35s ease;
-    transition: all 0.35s ease;
-  }
-
   &:hover {
-    background-position: bottom;
+    background: white;
     color: black;
-
-    ::before {
-      top: 0;
-    }
   }
 `;
 
@@ -126,16 +114,20 @@ const LaunchSite = styled.span`
   color: white;
 `;
 
-const Mission = () => {
+const Mission = ({ missionData }) => {
+  const isRocketRecovered = missionData.rocket.fairings?.recovered;
+
   return (
     <MissionWrapper>
       <MissionContainer>
         <MissionLine>MISSION</MissionLine>
-        <MissionName>Starlink-12 (v1.0)</MissionName>
+        <MissionName>{missionData.mission_name}</MissionName>
         <RocketLine>ROCKET</RocketLine>
         <RocketContainer>
-          <RocketName>Falcon 9</RocketName>
-          <RocketStatus>RECOVERED</RocketStatus>
+          <RocketName>{missionData.rocket.rocket_name}</RocketName>
+          <RocketStatus isRecovered={isRocketRecovered}>
+            {isRocketRecovered ? "RECOVERED" : "UNRECOVERED"}
+          </RocketStatus>
         </RocketContainer>
         <LearnMoreButton>LEARN MORE</LearnMoreButton>
       </MissionContainer>

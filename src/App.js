@@ -1,7 +1,6 @@
 import styled from "styled-components";
-import Header from "./components/Header";
-import Mission from "./components/Mission";
-import RescueShips from "./components/RescueShips";
+import MissionExplorer from "./components/MissionExplorer";
+import { useState, useEffect } from "react";
 
 const AppWrapper = styled.section`
   width: 100%;
@@ -16,29 +15,58 @@ const AppWrapper = styled.section`
   );
 `;
 
-const AppContainer = styled.div`
-  width: 55%;
-  margin: 0 auto;
-  display: flex;
-  flex-direction: column;
-`;
-
-const Line = styled.span`
-  width: 100%;
-  border-bottom: 1px solid #5c5c5d; position: absolute
-  line-height: 1px;
-`;
-
 function App() {
+  const [apiData, setApiData] = useState(null);
+
+  useEffect(() => {
+    fetch(`https://api.spacex.land/graphql/`, {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        query: `{
+          launchesPast(limit: 10) {
+            mission_name
+            launch_date_local
+            launch_site {
+              site_name_long
+            }
+            links {
+              article_link
+              video_link
+            }
+            rocket {
+              rocket_name
+              fairings {
+                recovered
+              }
+            }
+            ships {
+              name
+              home_port
+              image
+            }
+          }
+        }`,
+      }),
+    })
+      .then((res) => res.json())
+      .then((result) => {
+        setApiData(result);
+        console.log(result);
+      });
+  }, []);
+
+  if (!apiData) {
+    return <div>Loading</div>;
+  }
+
   return (
     <AppWrapper>
-      <AppContainer>
-        <Header></Header>
-        <Line></Line>
-        <Mission></Mission>
-        <Line></Line>
-        <RescueShips></RescueShips>
-      </AppContainer>
+      <MissionExplorer
+        allMissions={apiData?.data.launchesPast}
+      ></MissionExplorer>
     </AppWrapper>
   );
 }

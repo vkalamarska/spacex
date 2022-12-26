@@ -21,7 +21,7 @@ const RescueShipsContainer = styled.div`
   justify-content: space-between;
 `;
 
-const RescueShips = () => {
+const RescueShips = ({ missionData }) => {
   return (
     <RescueShipsWrapper>
       <RescueShipsLine>RESCUE SHIPS</RescueShipsLine>
