@@ -116,6 +116,18 @@ const LaunchSite = styled.span`
 
 const Mission = ({ missionData }) => {
   const isRocketRecovered = missionData.rocket.fairings?.recovered;
+  const launchDate = new Date(missionData.launch_date_utc).toLocaleString(
+    "en-GB",
+    {
+      day: "2-digit",
+      month: "short",
+      year: "numeric",
+    }
+  );
+  const learnMoreLink =
+    missionData.links.article_link ||
+    missionData.links.video_link ||
+    "https://www.spacex.com/";
 
   return (
     <MissionWrapper>
@@ -129,14 +141,20 @@ const Mission = ({ missionData }) => {
             {isRocketRecovered ? "RECOVERED" : "UNRECOVERED"}
           </RocketStatus>
         </RocketContainer>
-        <LearnMoreButton>LEARN MORE</LearnMoreButton>
+        <LearnMoreButton
+          onClick={() => {
+            window.open(learnMoreLink);
+          }}
+        >
+          LEARN MORE
+        </LearnMoreButton>
       </MissionContainer>
 
       <MissionDetailsContainer>
         <LaunchDateLine>LAUNCH DATE</LaunchDateLine>
-        <LaunchDate>24 Jan 2021</LaunchDate>
+        <LaunchDate>{launchDate}</LaunchDate>
         <LaunchSiteLine>LAUNCH SITE</LaunchSiteLine>
-        <LaunchSite>KSC LC 39A</LaunchSite>
+        <LaunchSite>{missionData.launch_site.site_name}</LaunchSite>
       </MissionDetailsContainer>
     </MissionWrapper>
   );
