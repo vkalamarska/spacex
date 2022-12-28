@@ -1,9 +1,9 @@
-import Image from "../assets/image.png";
 import styled from "styled-components";
 
 const ShipComponent = styled.div`
-  width: 250px;
-  height: 235px;
+  width: 235px;
+  height: 230px;
+  margin: 0 10px 20px 0;
   display: flex;
   flex-direction: column;
 `;
@@ -12,9 +12,9 @@ const ShipImage = styled.div`
   width: 100%;
   height: 60%;
   background-image: url(${(p) => p.imageUrl});
-  border-top-left-radius: 20px;
-  border-top-right-radius: 20px;
-  background-size: 100%;
+  border-top-left-radius: 15px;
+  border-top-right-radius: 15px;
+  background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
 `;
@@ -23,25 +23,25 @@ const ShipDetailsContainer = styled.div`
   width: 100%;
   height: 40%;
   background-color: white;
-  border-bottom-left-radius: 20px;
-  border-bottom-right-radius: 20px;
+  border-bottom-left-radius: 15px;
+  border-bottom-right-radius: 15px;
   display: flex;
   flex-direction: column;
 `;
 
 const ShipName = styled.span`
-  margin: 8px 10px 0 10px;
-  font-size: 18px;
+  margin: 8px 8px 0 8px;
+  font-size: 16px;
   font-weight: 700;
 `;
 
 const Line = styled.div`
-  margin: 7px 10px 0px 10px;
+  margin: 8px 8px 0px 8px;
   border-bottom: 1px solid #e8e8e8; ;
 `;
 
 const ShipDetails = styled.div`
-  margin: 10px;
+  margin: 12px 8px 8px 8px;
   display: flex;
 `;
 

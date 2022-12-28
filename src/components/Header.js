@@ -1,10 +1,10 @@
-import styled from "styled-components";
+import styled, { css } from "styled-components";
 import Logo from "../assets/logo.svg";
 import PathLeft from "../assets/path-left.svg";
 import PathRight from "../assets/path-right.svg";
 
 const HeaderContainer = styled.div`
-  height: 12%;
+  height: 80px;
   display: flex;
   justify-content: space-between;
 `;
@@ -36,7 +36,15 @@ const PathLeftButton = styled.button`
   background-size: 100%;
   background-repeat: no-repeat;
   background-position: center;
+  fill: white;
   cursor: pointer;
+
+  ${(p) =>
+    p.disabled &&
+    css`
+      cursor: auto;
+      opacity: 0.2;
+    `}
 `;
 
 const PathRightButton = styled.button`
@@ -48,18 +56,38 @@ const PathRightButton = styled.button`
   background-repeat: no-repeat;
   background-position: center;
   cursor: pointer;
+
+  ${(p) =>
+    p.disabled &&
+    css`
+      cursor: auto;
+      opacity: 0.2;
+    `}
 `;
 
-const Header = () => {
+const Header = ({ setMissionIndex, missionIndex }) => {
+  const isIndexPositive = missionIndex > 0;
+  const isIndexExist = missionIndex < 9;
+
   return (
     <HeaderContainer>
-      <PathLeftButton></PathLeftButton>
+      <PathLeftButton
+        onClick={() => {
+          setMissionIndex(missionIndex - 1);
+        }}
+        disabled={!isIndexPositive}
+      ></PathLeftButton>
       <LogoButton
         onClick={() => {
           window.open("https://www.spacex.com/");
         }}
       ></LogoButton>
-      <PathRightButton></PathRightButton>
+      <PathRightButton
+        onClick={() => {
+          setMissionIndex(missionIndex + 1);
+        }}
+        disabled={!isIndexExist}
+      ></PathRightButton>
     </HeaderContainer>
   );
 };

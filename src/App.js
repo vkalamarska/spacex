@@ -4,8 +4,7 @@ import { useState, useEffect } from "react";
 
 const AppWrapper = styled.section`
   width: 100%;
-  height: 100%;
-  overflow: hidden;
+  min-height: 100%;
   display: flex;
   background-color: rgba(67, 67, 67, 1);
   background-image: linear-gradient(
@@ -13,6 +12,7 @@ const AppWrapper = styled.section`
     rgba(67, 67, 67, 1) 0%,
     rgba(0, 0, 0, 1) 65%
   );
+  background-size: cover;
 `;
 
 function App() {

@@ -24,7 +24,10 @@ const MissionExplorer = ({ allMissions }) => {
 
   return (
     <AppContainer>
-      <Header></Header>
+      <Header
+        setMissionIndex={setMissionIndex}
+        missionIndex={missionIndex}
+      ></Header>
       <Line></Line>
       <Mission missionData={missionData}></Mission>
       <Line></Line>
