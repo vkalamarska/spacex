@@ -1,5 +1,6 @@
 import styled from "styled-components";
 import Ship from "../components/Ship";
+import { device } from "../device";
 
 const RescueShipsWrapper = styled.div`
   width: 100%;
@@ -34,6 +35,12 @@ const RescueShipsContainer = styled.div`
   }
   .div4 {
     grid-area: 2 / 1 / 3 / 2;
+  }
+
+  @media ${device.mobileM} {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: column;
   }
 `;
 

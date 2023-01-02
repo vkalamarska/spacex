@@ -1,10 +1,16 @@
 import styled, { css } from "styled-components";
+import { device } from "../device";
 
 const MissionWrapper = styled.div`
   width: 100%;
   margin: 30px 0 30px 0;
   display: flex;
   justify-content: space-between;
+
+  @media ${device.mobileM} {
+    display: flex;
+    flex-direction: column;
+  }
 `;
 const MissionContainer = styled.div`
   display: flex;
@@ -78,12 +84,21 @@ const LearnMoreButton = styled.button`
     background: white;
     color: black;
   }
+
+  @media ${device.mobileM} {
+    width: 100%;
+  }
 `;
 
 const MissionDetailsContainer = styled.div`
   display: flex;
   flex-direction: column;
   text-align: right;
+
+  @media ${device.mobileM} {
+    margin: 20px 0 0 0;
+    text-align: left;
+  }
 `;
 
 const LaunchDateLine = styled.span`

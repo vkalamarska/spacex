@@ -3,12 +3,17 @@ import Header from "./Header";
 import RescueShips from "./RescueShips";
 import styled from "styled-components";
 import { useState, useEffect } from "react";
+import { device } from "../device";
 
 const AppContainer = styled.div`
   width: 55%;
   margin: 0 auto;
   display: flex;
   flex-direction: column;
+
+  @media ${device.mobileM} {
+    width: 90%;
+  }
 `;
 
 const Line = styled.span`

@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import MissionExplorer from "./components/MissionExplorer";
 import { useState, useEffect } from "react";
+import { device } from "./device";
 
 const AppWrapper = styled.section`
   width: 100%;
@@ -13,6 +14,10 @@ const AppWrapper = styled.section`
     rgba(0, 0, 0, 1) 65%
   );
   background-size: cover;
+
+  @media ${device.mobileM} {
+    max-width: 390px;
+  }
 `;
 
 function App() {
