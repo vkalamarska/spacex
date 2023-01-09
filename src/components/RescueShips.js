@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import Ship from "../components/Ship";
-import { device } from "../device";
+import { device } from "../utils/device";
 
 const RescueShipsWrapper = styled.div`
   width: 100%;
@@ -18,29 +18,25 @@ const RescueShipsLine = styled.div`
 `;
 
 const RescueShipsContainer = styled.div`
-  display: grid;
-  grid-template-columns: repeat(3, 1fr);
-  grid-template-rows: repeat(2, 1fr);
-  grid-column-gap: 9px;
-  grid-row-gap: 10px;
+  display: flex;
+  flex-wrap: wrap;
 
-  .div1 {
-    grid-area: 1 / 1 / 2 / 2;
-  }
-  .div2 {
-    grid-area: 1 / 2 / 2 / 3;
-  }
-  .div3 {
-    grid-area: 1 / 3 / 2 / 4;
-  }
-  .div4 {
-    grid-area: 2 / 1 / 3 / 2;
-  }
-
-  @media ${device.mobileM} {
-    margin: 0 auto;
+  @media ${device.mobile} {
     display: flex;
     flex-direction: column;
+    align-items: center;
+  }
+
+  @media ${device.tablet} {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+  }
+
+  @media ${device.laptop} {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
   }
 `;
 

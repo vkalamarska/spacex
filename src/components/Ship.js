@@ -1,11 +1,18 @@
 import styled from "styled-components";
+import { device } from "../utils/device";
 
 const ShipComponent = styled.div`
   width: 235px;
   height: 230px;
-  margin: 0 10px 20px 0;
+  margin: 0 5px 20px 5px;
   display: flex;
   flex-direction: column;
+
+  @media ${device.mobile} {
+  }
+
+  @media ${device.tablet} {
+  }
 `;
 
 const ShipImage = styled.div`
@@ -43,6 +50,10 @@ const Line = styled.div`
 const ShipDetails = styled.div`
   margin: 12px 8px 8px 8px;
   display: flex;
+
+  @media ${device.mobile} {
+    margin: 9px 8px 6px 8px;
+  }
 `;
 
 const LabelsContainer = styled.div`

@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { device } from "../device";
+import { device } from "../utils/device";
 
 const MissionWrapper = styled.div`
   width: 100%;
@@ -7,7 +7,7 @@ const MissionWrapper = styled.div`
   display: flex;
   justify-content: space-between;
 
-  @media ${device.mobileM} {
+  @media ${device.mobile} {
     display: flex;
     flex-direction: column;
   }
@@ -85,7 +85,7 @@ const LearnMoreButton = styled.button`
     color: black;
   }
 
-  @media ${device.mobileM} {
+  @media ${device.mobile} {
     width: 100%;
   }
 `;
@@ -95,7 +95,7 @@ const MissionDetailsContainer = styled.div`
   flex-direction: column;
   text-align: right;
 
-  @media ${device.mobileM} {
+  @media ${device.mobile} {
     margin: 20px 0 0 0;
     text-align: left;
   }

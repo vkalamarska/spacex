@@ -1,7 +1,7 @@
 import styled from "styled-components";
 import MissionExplorer from "./components/MissionExplorer";
 import { useState, useEffect } from "react";
-import { device } from "./device";
+import { device } from "./utils/device";
 
 const AppWrapper = styled.section`
   width: 100%;
@@ -15,8 +15,10 @@ const AppWrapper = styled.section`
   );
   background-size: cover;
 
-  @media ${device.mobileM} {
-    max-width: 390px;
+  @media ${device.tablet} {
+    width: 100%;
+    min-height: 100%;
+    display: flex;
   }
 `;
 

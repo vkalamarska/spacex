@@ -3,7 +3,7 @@ import Header from "./Header";
 import RescueShips from "./RescueShips";
 import styled from "styled-components";
 import { useState, useEffect } from "react";
-import { device } from "../device";
+import { device } from "../utils/device";
 
 const AppContainer = styled.div`
   width: 55%;
@@ -11,7 +11,11 @@ const AppContainer = styled.div`
   display: flex;
   flex-direction: column;
 
-  @media ${device.mobileM} {
+  @media ${device.mobile} {
+    width: 90%;
+  }
+
+  @media ${device.tablet} {
     width: 90%;
   }
 `;

@@ -2,7 +2,7 @@ import styled, { css } from "styled-components";
 import Logo from "../assets/logo.svg";
 import PathLeft from "../assets/path-left.svg";
 import PathRight from "../assets/path-right.svg";
-import { device } from "../device";
+import { device } from "../utils/device";
 
 const HeaderContainer = styled.div`
   height: 80px;
@@ -28,8 +28,12 @@ const LogoButton = styled.button`
     filter: drop-shadow(5px 5px 10px #ffffff);
   }
 
-  @media ${device.mobileM} {
+  @media ${device.mobile} {
     width: 55%;
+  }
+
+  @media ${device.tablet} {
+    width: 40%;
   }
 `;
 
@@ -51,7 +55,7 @@ const PathLeftButton = styled.button`
       opacity: 0.2;
     `}
 
-  @media ${device.mobileM} {
+  @media ${device.mobile} {
     padding: 7px;
   }
 `;
@@ -73,7 +77,7 @@ const PathRightButton = styled.button`
       opacity: 0.2;
     `}
 
-  @media ${device.mobileM} {
+  @media ${device.mobile} {
     padding: 7px;
   }
 `;
