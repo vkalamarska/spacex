@@ -84,7 +84,7 @@ const PathRightButton = styled.button`
 
 const Header = ({ setMissionIndex, missionIndex }) => {
   const isIndexPositive = missionIndex > 0;
-  const isIndexExist = missionIndex < 9;
+  const isIndexExist = missionIndex < 11;
 
   return (
     <HeaderContainer>

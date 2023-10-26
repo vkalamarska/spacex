@@ -26,7 +26,7 @@ const Line = styled.span`
   line-height: 1em;
 `;
 
-const MissionExplorer = ({ allMissions }) => {
+const MissionExplorer = ({ allMissions, allShips }) => {
   const [missionIndex, setMissionIndex] = useState(0);
 
   const missionData = allMissions[missionIndex];
@@ -40,7 +40,7 @@ const MissionExplorer = ({ allMissions }) => {
       <Line></Line>
       <Mission missionData={missionData}></Mission>
       <Line></Line>
-      <RescueShips missionData={missionData}></RescueShips>
+      <RescueShips missionData={missionData} allShips={allShips}></RescueShips>
     </AppContainer>
   );
 };

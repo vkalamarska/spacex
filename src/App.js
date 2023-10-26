@@ -23,59 +23,40 @@ const AppWrapper = styled.section`
 `;
 
 function App() {
-  const [apiData, setApiData] = useState(null);
+  const [apiDataLaunches, setApiDataLaunches] = useState(null);
+  const [apiDataShips, setApiDataShips] = useState(null);
 
   useEffect(() => {
-    fetch(`https://api.spacex.land/graphql/`, {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify({
-        query: `{
-          launchesPast(limit: 10) {
-            mission_name
-            launch_site {
-              site_name_long
-              site_name
-            }
-            links {
-              article_link
-              video_link
-            }
-            rocket {
-              rocket_name
-              fairings {
-                recovered
-              }
-            }
-            ships {
-              name
-              home_port
-              image
-              weight_kg
-            }
-            launch_date_utc
-          }
-        }
-        `,
-      }),
-    })
+    fetch("https://api.spacexdata.com/v3/launches/past")
       .then((res) => res.json())
       .then((result) => {
-        setApiData(result);
+        const launchesWithShips = result
+          .filter((launch) => launch.ships.length > 1)
+          .sort(
+            (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+          )
+          .slice(0, 12);
+        setApiDataLaunches(launchesWithShips);
+        console.log(launchesWithShips);
+      });
+
+    fetch("https://api.spacexdata.com/v3/ships")
+      .then((res) => res.json())
+      .then((result) => {
+        setApiDataShips(result);
         console.log(result);
       });
   }, []);
 
-  if (!apiData) {
+  if (!apiDataLaunches || !apiDataShips) {
     return <div>Loading</div>;
   }
 
   return (
     <AppWrapper>
       <MissionExplorer
-        allMissions={apiData?.data.launchesPast}
+        allMissions={apiDataLaunches}
+        allShips={apiDataShips}
       ></MissionExplorer>
     </AppWrapper>
   );

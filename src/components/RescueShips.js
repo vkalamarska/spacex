@@ -40,12 +40,16 @@ const RescueShipsContainer = styled.div`
   }
 `;
 
-const RescueShips = ({ missionData }) => {
+const RescueShips = ({ missionData, allShips }) => {
+  const missionShips = allShips.filter((ship) =>
+    missionData.ships.includes(ship.ship_id)
+  );
+
   return (
     <RescueShipsWrapper>
       <RescueShipsLine>RESCUE SHIPS</RescueShipsLine>
       <RescueShipsContainer>
-        {missionData.ships.map((s) => (
+        {missionShips.map((s) => (
           <Ship ship={s} key={s.name}></Ship>
         ))}
       </RescueShipsContainer>

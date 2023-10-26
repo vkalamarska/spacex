@@ -169,7 +169,9 @@ const Mission = ({ missionData }) => {
         <LaunchDateLine>LAUNCH DATE</LaunchDateLine>
         <LaunchDate>{launchDate}</LaunchDate>
         <LaunchSiteLine>LAUNCH SITE</LaunchSiteLine>
-        <LaunchSite>{missionData.launch_site.site_name}</LaunchSite>
+        <LaunchSite title={missionData.launch_site.site_name_long}>
+          {missionData.launch_site.site_name}
+        </LaunchSite>
       </MissionDetailsContainer>
     </MissionWrapper>
   );
