@@ -44,7 +44,7 @@ const ShipName = styled.span`
 
 const Line = styled.div`
   margin: 8px 8px 0px 8px;
-  border-bottom: 1px solid #e8e8e8; ;
+  border-bottom: 1px solid #e8e8e8;
 `;
 
 const ShipDetails = styled.div`
@@ -71,6 +71,15 @@ const HomePortLine = styled.span`
 `;
 
 const WeightLine = styled.span`
+  margin: 0 0 6px 0;
+  color: #868686;
+  font-size: 9px;
+  font-weight: 500;
+  letter-spacing: 0.1em;
+`;
+
+const ShipTypeLine = styled.span`
+  margin: 0 0 6px 0;
   color: #868686;
   font-size: 9px;
   font-weight: 500;
@@ -89,6 +98,13 @@ const HomePort = styled.span`
 `;
 
 const Weight = styled.span`
+  margin: 0 0 3px 0;
+  font-size: 11px;
+  font-weight: 700;
+`;
+
+const ShipType = styled.span`
+  margin: 0 0 3px 0;
   font-size: 11px;
   font-weight: 700;
 `;
@@ -103,10 +119,12 @@ const Ship = ({ ship }) => {
         <ShipDetails>
           <LabelsContainer>
             <HomePortLine>HOME PORT</HomePortLine>
+            <ShipTypeLine>SHIP TYPE</ShipTypeLine>
             <WeightLine>WEIGHT [KG]</WeightLine>
           </LabelsContainer>
           <ValuesContainer>
             <HomePort>{ship.home_port}</HomePort>
+            <ShipType>{ship.ship_type}</ShipType>
             <Weight>{ship.weight_kg}</Weight>
           </ValuesContainer>
         </ShipDetails>

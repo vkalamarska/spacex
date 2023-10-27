@@ -33,7 +33,9 @@ function App() {
         const launchesWithShips = result
           .filter((launch) => launch.ships.length > 1)
           .sort(
-            (a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()
+            (a, b) =>
+              new Date(b.launch_date_utc).getTime() -
+              new Date(a.launch_date_utc).getTime()
           )
           .slice(0, 12);
         setApiDataLaunches(launchesWithShips);
